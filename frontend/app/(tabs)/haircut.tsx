@@ -5,41 +5,17 @@ import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useState } from 'react';
 
 
-export default function LoginScreen() {
+export default function HaircutScreen() {
     const [isLogging, setIsLogging] = useState(true);
     const [result, setResult] = useState(null);
 
     const { width, height } = Dimensions.get('window');
-
-    const login = async () => {
-        try {
-            setIsLogging(true);
-            const res = await fetch("https://ipaddress:5000/login");
-        } catch (error) {
-            console.error(error);
-        }
-        setIsLogging(false);
-    }
-
-    const register = async () => {
-        try {
-            setIsLogging(true);
-            const res = await fetch("https://ipaddress:5000/register");
-        } catch (error) {
-            console.error(error);
-        }
-        setIsLogging(false);
-    }
-    
 
 
     return (
         <ParallaxScrollView
             headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
             headerImage={<View style={{height: 0}} />}>
-            {/*<FormData>*/}
-
-            {/*</FormData>*/}
         </ParallaxScrollView>
     );
 }
