@@ -1,5 +1,13 @@
 # uiuc-lifestyle
 
+## Features
+- User Login
+- Bus Tracking + Class Schedule
+- Grocery Best Prices
+- Study Spaces
+- Haircut Locations
+- And more...
+
 ## Getting Started
 1. Set Up Virtual Environment
 
