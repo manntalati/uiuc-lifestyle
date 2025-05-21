@@ -5,6 +5,7 @@ from flask_login import LoginManager, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
+import requests
 
 app = Flask(__name__)
 CORS(app)
@@ -38,6 +39,34 @@ def login():
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     return jsonify({'message': 'Register endpoint'})
+
+
+@app.route('/bustracker', methods=['POST', 'GET'])
+def bustracker():
+    # Get Vehicles by Route
+    # - important to use next_stop_id from it
+    # - important to use location so its lat and long to track where the bus is at
+
+    api_key = os.getenv('API_KEY')
+    url = "https://developer.cumtd.com/api/v2.2/json/GetVehiclesByRoute"
+    params = {
+        'key': api_key,
+        'route_id': 'ILLINI'
+    }
+    response = requests.get(url, params=params)
+    information = []
+    if response.status_code == 200:
+        vehicles = response.json().get("vehicles", [])
+        for vehicle in vehicles:
+            information.append({
+                'next_stop_id': vehicle.get('next_stop_id', 'N/A'),
+                'lat': vehicle['location'].get('lat', 'N/A'),
+                'lon': vehicle['location'].get('lon', 'N/A')
+            })
+    else:
+        return jsonify({'error': 'Failed to fetch data from API'}), 500
+    
+    return jsonify(information)
 
 
 if __name__ == '__main__':
