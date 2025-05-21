@@ -9,8 +9,6 @@ export default function GroceryScreen() {
     const [isLogging, setIsLogging] = useState(true);
     const [result, setResult] = useState(null);
 
-    const { width, height } = Dimensions.get('window');
-
 
     return (
         <ParallaxScrollView
