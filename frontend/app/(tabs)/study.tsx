@@ -24,7 +24,7 @@ export default function StudyScreen() {
         const spaces = async () => {
             setIsLogging(true);
             try {
-                const res = await fetch("http://192.168.86.45:8082/studyspaces");
+                const res = await fetch("http://10.0.0.107:8082/studyspaces");
                 const data = await res.json();
                 setResult(data);
             } catch (error) {
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     title2: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: 8,
+        marginBottom: 5,
         marginLeft: 10,
         marginTop: 20,
     },
