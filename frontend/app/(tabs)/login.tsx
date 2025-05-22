@@ -14,7 +14,7 @@ export default function LoginScreen() {
     const login = async () => {
         try {
             setIsLogging(true);
-            const res = await fetch("https://ipaddress:5000/login");
+            const res = await fetch("https://ipaddress:8082/login");
         } catch (error) {
             console.error(error);
         }
@@ -24,7 +24,7 @@ export default function LoginScreen() {
     const register = async () => {
         try {
             setIsLogging(true);
-            const res = await fetch("https://ipaddress:5000/register");
+            const res = await fetch("https://ipaddress:8082/register");
         } catch (error) {
             console.error(error);
         }
